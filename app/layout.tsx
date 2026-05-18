@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Erotari",
   description: "Soon to be revealed",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/loghi/favicon.svg",
   },
 };
 

@@ -45,27 +45,31 @@ export default function IntroScene({ onChoose }: { onChoose: (phase: 'measure' |
         pointerEvents: 'none',
       }} />
 
-      {/* logo — in cima al centro */}
-      <div style={{
+      {/* header con pannello blurrato + logo */}
+      <header style={{
         position:       'absolute',
         top:            0,
         left:           0,
         right:          0,
         display:        'flex',
+        alignItems:     'center',
         justifyContent: 'center',
-        pointerEvents:  'none',
+        padding:        '1.8rem',
+        background:     'rgba(235, 225, 205, 0.08)',
+        backdropFilter: 'blur(8px)',
+        borderBottom:   '0.5px solid rgba(235, 225, 205, 0.15)',
         opacity:        visible ? 1 : 0,
         transition:     'opacity 1.0s ease',
       }}>
         <Image
-          src="/erotari_logo.svg"
+          src="/loghi/erotari_logo_white_white.svg"
           alt="Erotari"
           width={160}
           height={40}
           style={{ objectFit: 'contain' }}
           priority
         />
-      </div>
+      </header>
 
       {/* contenuto centrale */}
       <div style={{
@@ -95,12 +99,13 @@ export default function IntroScene({ onChoose }: { onChoose: (phase: 'measure' |
 
         <p style={{
           fontFamily:    'Georgia, serif',
-          fontSize:      'clamp(14px, 0.9vw, 12px)',
+          fontSize:      'clamp(18px, 0.9vw, 12px)',
           letterSpacing: '0.35em',
           textTransform: 'uppercase',
           color:         'rgba(255,255,255,1.0)',
           margin:        0,
           textAlign:     'center',
+          textShadow:    '0 2px 24px rgba(0,0,0,0.4)',
           opacity:        visible ? 1 : 0,
           transition:     'opacity 6.2s ease',
         }}>
