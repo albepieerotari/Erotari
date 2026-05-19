@@ -2,6 +2,12 @@
 
 import { useEffect, useRef, useCallback } from 'react';
 
+// ── imposta qui il loop del video ──────────────────────────────
+const FPS         = 24;   // frame rate del video
+const VIDEO_START = 12;    // frame di partenza
+const VIDEO_END   = 305;    // frame finale — 0 = fino alla fine
+// ──────────────────────────────────────────────────────────────
+
 const VERT = `
 precision highp float;
 attribute vec2 a_pos;
@@ -260,6 +266,7 @@ export default function UnifiedCanvas({
   });
 
   const smoothRef = useRef({ mx: 0, my: 0, grav: 0, show: 0, neutral: 0 });
+
   const glDataRef = useRef<{
     gl:   WebGLRenderingContext;
     prog: WebGLProgram;
@@ -326,6 +333,13 @@ export default function UnifiedCanvas({
 
     const video = videoRef.current;
     if (video) {
+      const startSec = VIDEO_START / FPS;
+      const endSec   = VIDEO_END   / FPS;
+      video.currentTime = startSec;
+      const onTime = () => {
+        if (video.currentTime >= endSec) video.currentTime = startSec;
+      };
+      video.addEventListener('timeupdate', onTime);
       video.play().catch(() => {
         const resume = () => { video.play(); document.removeEventListener('click', resume); };
         document.addEventListener('click', resume);
@@ -386,7 +400,7 @@ export default function UnifiedCanvas({
       <video
         ref={videoRef}
         src="/videos/scene_01.mp4"
-        muted loop playsInline preload="auto"
+        muted playsInline preload="auto"
         style={{
           position:      'absolute',
           width:         '1px',
@@ -406,6 +420,7 @@ export default function UnifiedCanvas({
           display:  'block',
         }}
       />
+
     </>
   );
 }
