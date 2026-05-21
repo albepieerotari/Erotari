@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import Image         from 'next/image';
 import UnifiedCanvas from './UnifiedCanvas';
 
-export default function IntroScene({ onChoose }: { onChoose: (phase: 'measure' | 'keep') => void }) {
+export default function IntroScene() {
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
   const [visible, setVisible] = useState(false);
@@ -41,7 +41,7 @@ export default function IntroScene({ onChoose }: { onChoose: (phase: 'measure' |
       <div style={{
         position:      'absolute',
         inset:         0,
-        background:    'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.5) 100%)',
+        background:    'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.15) 100%)',
         pointerEvents: 'none',
       }} />
 
@@ -54,10 +54,7 @@ export default function IntroScene({ onChoose }: { onChoose: (phase: 'measure' |
         display:        'flex',
         alignItems:     'center',
         justifyContent: 'center',
-        padding:        '1.8rem',
-        background:     'rgba(235, 225, 205, 0.08)',
-        backdropFilter: 'blur(8px)',
-        borderBottom:   '0.5px solid rgba(235, 225, 205, 0.15)',
+        padding:        '1.0rem',
         opacity:        visible ? 1 : 0,
         transition:     'opacity 1.0s ease',
       }}>
@@ -84,7 +81,7 @@ export default function IntroScene({ onChoose }: { onChoose: (phase: 'measure' |
       }}>
         <p style={{
           fontFamily:    'Georgia, serif',
-          fontSize:      'clamp(26px, 3vw, 38px)',
+          fontSize:      'clamp(30px, 3vw, 38px)',
           letterSpacing: '0.12em',
           fontStyle:     'italic',
           color:         'rgba(255,255,255,1.0)',
@@ -99,7 +96,7 @@ export default function IntroScene({ onChoose }: { onChoose: (phase: 'measure' |
 
         <p style={{
           fontFamily:    'Georgia, serif',
-          fontSize:      'clamp(18px, 0.9vw, 12px)',
+          fontSize:      'clamp(14px, 1.9vw, 12px)',
           letterSpacing: '0.35em',
           textTransform: 'uppercase',
           color:         'rgba(255,255,255,1.0)',
@@ -123,7 +120,7 @@ export default function IntroScene({ onChoose }: { onChoose: (phase: 'measure' |
         alignItems:     'center',
         justifyContent: 'center',
         gap:            '2.5rem',
-        padding:        '1.2rem 2.5rem',
+        padding:        '0.8rem 2.5rem',
         background:     'rgba(235, 225, 205, 0.08)',
         backdropFilter: 'blur(5px)',
         borderTop:      '0.5px solid rgba(235, 225, 205, 0.15)',
@@ -134,29 +131,19 @@ export default function IntroScene({ onChoose }: { onChoose: (phase: 'measure' |
           href="mailto:amministrazione@erotari.com"
           style={{
             fontFamily:     'Georgia, serif',
-            fontSize:       'clamp(9px, 0.85vw, 11px)',
+            fontSize:       'clamp(11px, 0.85vw, 11px)',
             letterSpacing:  '0.25em',
             textTransform:  'uppercase',
-            color:          'rgba(235, 225, 205, 0.7)',
+            color:          'rgba(33, 33, 33, 0.8)',
             textDecoration: 'none',
             transition:     'color 0.3s ease',
           }}
           onMouseEnter={e => { (e.target as HTMLElement).style.color = 'rgba(235, 225, 205, 0.9)'; }}
           onMouseLeave={e => { (e.target as HTMLElement).style.color = 'rgba(235, 225, 205, 0.7)'; }}
         >
-          Contacts
+          Info&Contacts
         </a>
 
-        <p style={{
-          fontFamily:    'Georgia, serif',
-          fontSize:      'clamp(9px, 0.85vw, 11px)',
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          color:         'rgba(235, 225, 205, 0.5)',
-          margin:        0,
-        }}>
-          {'Erotari™ — All rights reserved'}
-        </p>
       </footer>
 
     </div>
